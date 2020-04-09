@@ -2,7 +2,7 @@ package ex1;
 
 public class 예제_StringTest {
 	public static void main(String[] args) {
-		double aa = 1D; //변수 선언해놓고 안쓰니까 저장공간 낭비라고 뜨는것
+		double aa = 1D; // 밑줄 그어진거 변수 선언해놓고 안쓰니까 저장공간 낭비라고 뜨는것
 		String a = 7 + " "; // 정수 다음에 문자열이 나오니까 결과는 정수로 출력
 		String b = " " + 7; // 문자열 다음 정수가 나오니까 결과는 문자열로 출력
 		String c = 7 + ""; 
