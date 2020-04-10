@@ -16,6 +16,6 @@ public class 예제_StringTest {
 		System.out.println(d);
 		System.out.println(e);
 		System.out.println(f);
-		System.out.println(g);
+		System.out.println(g);  
 	} 
 }

@@ -9,4 +9,4 @@ public class 예제_CastingEx1{
 		System.out.println("i=" + i); // 문자열 i= 출력, i변수의 값 100 출력
 		System.out.println("result=" + result); // 문자열 result= 출력, (int)d ---> double 값이 int 값으로 형변환 되서 100, 100+100 = 200 출력
 	}
-}
+}  
