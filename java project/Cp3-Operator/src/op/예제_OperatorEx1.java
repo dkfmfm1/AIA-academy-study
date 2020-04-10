@@ -1,6 +1,6 @@
 package op;
 
-public class 예제_OperatorEx1 {
+public class 예제_OperatorEx1 {       
 	public static void main(String args[]) {
 //		int i=5;
 //		i++;
@@ -12,12 +12,8 @@ public class 예제_OperatorEx1 {
 //		System.out.println(i);
 //		
 		
-		//아래의 코드는 사과를 담는데 필요한 바구니(버켓)의 수를 구하는 코드이다.
-		//만일 사과의수가 123개이고 하나의 바구니에는10개의 사과를 담을 수 있다면,13개의 바구니가 필요할 것이다.(1)에 알맞은 코드를 넣으시오.
-		int a = 123;
-		int b = 10;
-		int c = a/b;
-		System.out.println(c);
-	
+		//아래는 변수num의 값 중에서 백의 자리 이하를 버리는 코드이다.
+		//만일 변수 num 의 값이‘456’이라면 ‘400’이 되고,‘111’이라면 ‘100’이 된다.(1)에 알맞은 코드를 넣으시오.
+		
 	}
 }
