@@ -1,6 +1,6 @@
 package op;
 
-public class PrefixOp {  
+public class PrefixOp {   
 
 	public static void main(String[] args) {
 		
