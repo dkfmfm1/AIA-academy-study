@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_CharToCode {
+public class CharToCode {
 	 public static void main(String[] args) {
 		 char ch = 'A'; //char타입 변수 ch에 값 A 저장(문자)
 		 // char ch = '\u0041';로 바꿔 써도 같다.

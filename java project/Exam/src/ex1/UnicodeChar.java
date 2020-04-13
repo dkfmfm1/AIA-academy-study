@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_UnicodeChar {
+public class UnicodeChar {
 
 	public static void main(String[] args) {
 		

@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_CastingEx2{
+public class CastingEx2{
 	public static void main(String[] args){
 		byte b = 10; //byte타입 변수 b에  값을 10으로 선언
 		int i = (int)b; // int타입 변수 i에 byte타입 변수 b를 int타입으로 형변환하여 값으로 선언

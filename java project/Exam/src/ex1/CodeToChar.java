@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_CodeToChar {
+public class CodeToChar {
 	 public static void main(String[] args) {
 		 int code = 65; // int타입 변수 code에 값 65저장 
 		 // 또는 int code = 0x0041;

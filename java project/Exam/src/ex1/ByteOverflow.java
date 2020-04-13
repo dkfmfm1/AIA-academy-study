@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_ByteOverflow{
+public class ByteOverflow{
 	public static void main(String[] args){
 		
 		byte b = 0; // byte형 변수 b를 선언하고 0으로 초기화.

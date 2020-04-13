@@ -2,7 +2,7 @@ package ex1;
 
 // 대문자 'A'의 유니코드값과 'Z'의 유니코드값을 출력하세요
 
-public class 예제_CastingOperation {
+public class CastingOperation {
 	public static void main(String[] args) {
 		char ch1='A'; // char타입 변수 ch1에 문자 A값 저장
 		char ch2='Z'; // char타입 변수 ch2에 문자 Z값 저장

@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_SpecialChar {
+public class SpecialChar {
 	public static void main(String[] args) {
 		char single = '\''; // char타입 변수 single에 '저장
 		// single = ''';와 같이 할 수 없다.

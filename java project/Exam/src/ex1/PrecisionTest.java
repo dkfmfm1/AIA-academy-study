@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_PrecisionTest{
+public class PrecisionTest{
 	public static void main(String[] args){
 		float f = 1.2345678901234567890f; // float타입 변수 f 선언 (값이 float의 범위를 넘어가서 접미사 f붙임)
 		double d = 1.2345678901234567890; // double타입 변수 d 선언

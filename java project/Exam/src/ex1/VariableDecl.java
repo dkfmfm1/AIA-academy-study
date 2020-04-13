@@ -13,7 +13,7 @@ package ex1;
 //	}
 //}
 
-public class 예제_VariableDecl {
+public class VariableDecl {
 	public static void main(String[] args) {
 		double num1, num2, result; //double 타입 변수 num1, num2, result 선언
 		

@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_StringTest {
+public class StringTest {
 	public static void main(String[] args) {
 		double aa = 1D; // 밑줄 그어진거 변수 선언해놓고 안쓰니까 저장공간 낭비라고 뜨는것
 		String a = 7 + " "; // String타입 변수 a에 숫자 7, 공백 저장 -->7+" "는 정수로 출력

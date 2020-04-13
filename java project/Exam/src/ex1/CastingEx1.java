@@ -1,6 +1,6 @@
 package ex1;
 
-public class 예제_CastingEx1{
+public class CastingEx1{
 	public static void main(String[] args){
 		double d = 100.0;
 		int i = 100;
