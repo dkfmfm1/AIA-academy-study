@@ -6,7 +6,7 @@ public class CompanyFriend  extends Friend{
 		super(name, phoneNum, addr);
 	}
 
-	void showData() {
+	public void showData() {
 		
 	}
 	

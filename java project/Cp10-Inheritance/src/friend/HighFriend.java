@@ -11,7 +11,7 @@ public class HighFriend extends Friend {
 	}
 
 	@Override
-	void showData() {
+	public void showData() {
 		showBasicInfo(); // Friend의 showBasicInfo 상속받음
 		System.out.println("직업 : " + this.work); // 그냥 work라 해도 됨
 	}
