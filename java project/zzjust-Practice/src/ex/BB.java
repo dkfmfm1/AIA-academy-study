@@ -1,11 +1,18 @@
 package ex;
 
 public class BB {
-
-public static void main(String[] args) {
-
-	AA a = new AA();
-	a.selfIntroduce("경기대", 26, "박현정", "멍때리기");
 	
+
+
+	public static void addOneDArr(int[][] arr, int add) {
+
+		  for (int i = 0; i < arr.length; i++)
+		   for (int j = 0; j < arr[i].length; j++) {
+		    arr[i][j] += add;
+		    System.out.print(arr[i][j]+"\t");
+		   }
+		 System.out.println();
+	}
 }
-}
+
+		
