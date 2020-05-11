@@ -17,16 +17,18 @@ public class Main {
          int selectNum = sc.nextInt();
          sc.nextLine();
          
-         if(selectNum==1) {//관리자
-        	 
+         if(selectNum==1) { //관리자
+            
             Menu.showMenu2_1();
+            int selectNum1 = sc.nextInt();
             sc.nextLine();
-            if(selectNum==1) {
+            if(selectNum1==1) {
             
               
                   manager1.loginInfo();//로그인
+                  int selectNum2 = sc.nextInt();
                   sc.nextLine();
-                  if(selectNum==1) {
+                  if(selectNum2==1) {
                   
                         // 전체 리스트 출력
                         manager.showAllData();
@@ -35,21 +37,22 @@ public class Main {
             } else {
                   manager1.addInfo1();//회원가입
             }
-        	
+           
             
             
          } else { //사용자
-        	 
-       	 
         Menu.showMenu2_2();
+        int selectNum3 = sc.nextInt();
         sc.nextLine();
-        if(selectNum==1) {
+        if(selectNum3==1) {
         
            manager.loginInfo();//로그인
            sc.nextLine();   
            Menu.showMenu3();
+           
+           int selectNum4 = sc.nextInt();
            sc.nextLine();
-              switch(selectNum) {
+              switch(selectNum4) {
               
               case 1:
                  // 이름으로 검색
@@ -59,24 +62,20 @@ public class Main {
                  // 이름으로 검색후 삭제
                  manager.deleteInfo();
                  break;
-              case 3 :
-            	  // 상품목록보기
-            	 break;
-              case 4: 
+              case 3: 
                  //return;
                  System.out.println("EverPets를 이용해주셔서 감사합니다. 안녕히가세요.");
                  System.exit(0);   
                  break;
            }
         }
-      else {
-
-      manager.addInfo(); //회원가입
-    
-      }
+              else {
         
- 
         
+           manager.addInfo(); //회원가입
+            
+            }
+      
          }
          
       }

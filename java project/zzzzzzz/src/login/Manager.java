@@ -32,7 +32,7 @@ public class Manager {
 Infor signUpInstance() {
    
    Infor info = null;
-   
+   	while(true) {
       System.out.println("*** 회원가입 페이지입니다***");
       
       System.out.println("이름을 입력해주세요.");      
@@ -47,21 +47,25 @@ Infor signUpInstance() {
       System.out.println("비밀번호를 입력해 주세요.");
       String password = sc.nextLine();
       
-      while((name==null||name.trim().isEmpty())||(email==null||email.trim().isEmpty())||
+      if((name==null||name.trim().isEmpty())||(email==null||email.trim().isEmpty())||
         (id==null||id.trim().isEmpty())||(password==null||password.trim().isEmpty())) {
          System.out.println("입력되지 않은 항목이 있습니다. 모든 항목을 빠짐없이 입력해주세요.");
-         break; // 회원가입페이지입니다. 부터 다시나오게 하는 방법을 모르겠어요.
+         continue; // 회원가입페이지입니다. 부터 다시나오게 하는 방법을 모르겠어요.
       }
-      
+   	
       System.out.println("회원가입이 완료되었습니다.");
       
       info = new Infor(name, email, id, password);
       
       return info;
+   	}
    }
+   	
    
-
+   	
 void loginInfo() {
+	
+	while(true) {
    System.out.println("=======================");
    System.out.println("*** 로그인 페이지입니다 ***");
    System.out.println("아이디를 입력해주세요.");
@@ -72,14 +76,14 @@ void loginInfo() {
    // 회원가입에 저장된 데이터랑, 로그인할 때 사용자한테서 입력받는 데이터를 비교하는 방법을 모르겠어요
    	String password = sc.nextLine();
    
-   	if(id.equals(member)&&password.equals(member)) {
-   		System.out.println("로그인 되었습니다.");
-   	}else {
+   	if(!(id.equals(member)&&password.equals(member))) {
    		System.out.println("가입된 정보가 없습니다.");
-   		
    	}
-   
-   
+   	
+   	System.out.println("로그인 되었습니다.");
+   	
+	}
+	
 }
 
 

@@ -32,6 +32,8 @@ Infor signUpInstance1() {
    
    Infor info = null;
 
+   while(true) {
+   		
       System.out.println("*** 회원가입 페이지입니다***");
       
       System.out.println("이름을 입력해주세요.");      
@@ -46,10 +48,10 @@ Infor signUpInstance1() {
       System.out.println("비밀번호를 입력해 주세요.");
       String password = sc.nextLine();
       
-      while((name==null||name.trim().isEmpty())||(email==null||email.trim().isEmpty())||
+     if((name==null||name.trim().isEmpty())||(email==null||email.trim().isEmpty())||
           (id==null||id.trim().isEmpty())||(password==null||password.trim().isEmpty())) {
             System.out.println("입력되지 않은 항목이 있습니다. 모든 항목을 빠짐없이 입력해주세요.");
-            break; // 회원가입페이지입니다. 부터 다시나오게 하는 방법을 모르겠어요.
+           continue; // 회원가입페이지입니다. 부터 다시나오게 하는 방법을 모르겠어요.
          }
       
       System.out.println("회원가입이 완료되었습니다.");
@@ -57,6 +59,7 @@ Infor signUpInstance1() {
       info = new Infor(name, email, id, password);
       
       return info;
+   }
    }
 
 
