@@ -26,6 +26,7 @@ public class Main {
 				if (selectNum1 == 1) {
 
 					manager1.loginInfo();// 로그인
+					while(true) {
 					
 						Menu.showMenu4();
 						int selectNum2 = sc.nextInt();
@@ -57,8 +58,8 @@ public class Main {
 						case 4:
 							System.exit(0);
 							break;
-						
-						
+						}
+				
 					}
 				} else {
 					manager1.addInfo1();// 회원가입
