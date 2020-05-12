@@ -9,9 +9,9 @@ public class Main {
 		Manager manager = new Manager();
 		Manager1 manager1 = new Manager1();
 		Client client = new Client();
-
+		
 		Scanner sc = new Scanner(System.in);
-
+		
 		while (true) {
 
 			Menu.showMenu1();
@@ -36,8 +36,8 @@ public class Main {
 							manager.showAllData();
 							break;
 						case 2:
-							// 재고내역??
-
+							// 재고내역
+							manager1.stockInfo();
 							break;
 						case 3:
 							// 거래처 정보
@@ -69,8 +69,8 @@ public class Main {
 				int selectNum3 = sc.nextInt();
 				sc.nextLine();
 				if (selectNum3 == 1) {
-
 					manager.loginInfo();// 로그인
+					while(true) {
 					Menu.showMenu3();
 
 					int selectNum4 = sc.nextInt();
@@ -87,11 +87,15 @@ public class Main {
 						break;
 					case 3:
 						// 상품목록보기
+						manager.productList();
+						break;
 					case 4:
 						// return;
 						System.out.println("EverPets를 이용해주셔서 감사합니다. 안녕히가세요.");
 						System.exit(0);
 						break;
+					}
+					continue;
 					}
 				} else {
 

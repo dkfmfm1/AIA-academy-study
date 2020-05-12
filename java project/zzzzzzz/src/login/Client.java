@@ -12,7 +12,7 @@ public class Client {
 	      System.out.println("장난감/샤워용품");
 	      System.out.println("거래처 이름 : 고양이가 좋아");
 	      System.out.println("거래처 번호 : 041)9876-5432");
-	      System.out.println("거래처 주소 : 충청남도 천안시 고양동 12-567");
+	      System.out.println("거래처 주소 : 충청남도 천안시 고양동 12-567"); 
 	      
 	   }
 	

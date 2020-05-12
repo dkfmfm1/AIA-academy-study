@@ -6,7 +6,7 @@ public class Infor {
    String email;
    String id;
    String password;
-   
+    
    Infor(String name, String email, String id, String password){
       this.name = name;
       this.email = email;

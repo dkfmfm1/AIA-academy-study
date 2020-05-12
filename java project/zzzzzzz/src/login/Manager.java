@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Manager {
 
+	Main main = new Main();
+	
 	// 회원 객체
 	Infor[] member;
 	int cnt;
@@ -59,30 +61,29 @@ public class Manager {
 
 	void loginInfo() {
 
-		System.out.println("=======================");
+		for (int i = 0; i < member.length; i++) {
+		
+		System.out.println("===========================");
 		System.out.println("*** 로그인 페이지입니다 ***");
 		System.out.println("아이디를 입력해주세요.");
-		// 회원가입에 저장된 데이터랑, 로그인할 때 사용자한테서 입력받는 데이터를 비교하는 방법을 모르겠어요
 		String id = sc.nextLine();
 
 		System.out.println("비밀번호를 입력해주세요.");
-		// 회원가입에 저장된 데이터랑, 로그인할 때 사용자한테서 입력받는 데이터를 비교하는 방법을 모르겠어요
 		String password = sc.nextLine();
 
-		for (int i = 0; i < member.length; i++) {
+		
 
-			if (member[i].id.equals(id) && member[i].password.equals(password)) {
-				System.out.println("로그인 되었습니다.");
-
-				break;
-
-			} else {
-
-				System.out.println("가입된 정보가 없습니다.");
-				continue;
-			}
+		if (member[i] == null) {
+			System.out.println("가입된 정보가 없습니다.");
+			main.main(null);
+		} else if (member[i].id.equals(id) && member[i].password.equals(password)) {
+			System.out.println("로그인 되었습니다.");
+			break;
+		} else {
+			System.out.println("가입된 정보가 없습니다.");
+			continue;
 		}
-
+		}
 	}
 
 	void showAllData() {
@@ -93,7 +94,8 @@ public class Manager {
 		}
 
 	}
-
+	
+	
 	int searchIndex(String name) {
 
 		int searchIndex = -1;
@@ -145,6 +147,26 @@ public class Manager {
 
 		}
 
+	}
+	
+	void productList() {
+		System.out.println("*** 상품목록입니다 ***");
+		System.out.println("");
+		System.out.println("--강아지--");
+		System.out.println("중형견 사료   | 가격 : 35200");
+		System.out.println("대형견 사료   | 가격 : 51000");
+		System.out.println("강아지껌      | 가격 : 9800");
+		System.out.println("강아지 육포   | 가격 : 12100");
+		System.out.println("애견 털브러쉬 | 가격 : 15900");
+		System.out.println("애견 목욕장갑 | 가격 : 5300");
+		System.out.println("");
+		System.out.println("--고양이--");
+		System.out.println("소형묘 사료   | 가격 : 26900");
+		System.out.println("중형묘 사료   | 가격 : 34450");
+		System.out.println("참치볼        | 가격 : 11500");
+		System.out.println("연어볼        | 가격 : 13200");
+		System.out.println("");
+		System.out.println("");
 	}
 	
 }
