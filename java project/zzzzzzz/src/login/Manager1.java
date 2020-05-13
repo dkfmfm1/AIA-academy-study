@@ -3,7 +3,7 @@ package login;
 import java.util.Scanner;
 
 public class Manager1 {
-
+ 
 	Main main = new Main(); 
 	
 	// 관리자 객체

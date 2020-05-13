@@ -1,7 +1,7 @@
 package login;
 
 public class Client {
-	
+	 
 	void catClient() {
 		   
 	      System.out.println("사료/간식");

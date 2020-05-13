@@ -3,7 +3,7 @@ package login;
 import java.util.Scanner;
 
 public class Manager {
-
+ 
 	Main main = new Main();
 	
 	// 회원 객체

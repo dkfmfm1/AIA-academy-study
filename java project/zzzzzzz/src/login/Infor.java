@@ -1,7 +1,7 @@
 package login;
 
 public class Infor {
-   
+    
    String name;
    String email;
    String id;

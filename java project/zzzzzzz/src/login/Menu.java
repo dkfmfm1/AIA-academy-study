@@ -9,7 +9,7 @@ public class Menu {
       System.out.println("        2. 사용자          ");
       System.out.println("===========================");
    }
-   
+    
    public static void showMenu2_1() {
       System.out.println("================================================");
       System.out.println("*** 관리자 페이지입니다. 번호를 입력해주세요 ***");
