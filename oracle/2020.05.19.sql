@@ -168,3 +168,26 @@ from emp
 order by deptno, ename, sal
 ;
 
+
+
+
+
+select ename, sal, sal*12+100 as Income
+from emp
+order by sal*12+100 desc;
+
+select * from tab;
+desc book;
+desc customer;
+desc orders;
+select * from book;
+select * from customer;
+select * from orders;
+
+select count(ORDERID) 
+from ORDERS
+where CUSTID = 1;
+
+
+
+
