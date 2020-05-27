@@ -162,12 +162,21 @@ delete from emp01 where deptno = (
 ------------------------------------------------
 -- 1. 회사친구의 정보 변경
 
+-- 기본 정보 + 회사정보 수정
+-- 기본 정보 수정
+-- 회사 정보 수정
+
 update phoneinfo_com
 set fr_c_company = 'fcBarcelona'
 where idx = 0002
 ;
 
 -- 2. 학교친구의 정보 변경
+-- 기본정보 + 학교정보 수정
+-- 기본정보 수정
+-- 학교정보 수정
+
+
 update phoneinfo_univ
 set fr_u_major = 'keeper학과'
 where idx = 0001
@@ -180,7 +189,7 @@ where idx = 0001
 ------------------------------------------------
 -- 1. 회사친구 정보를 삭제
 
-delete from phoneinfo_com where idx = 0002;
+delete from phoneinfo_com where idx = 000;
 
 
 -- 2. 학교친구 정보를 삭제
