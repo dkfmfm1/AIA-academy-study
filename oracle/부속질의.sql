@@ -10,7 +10,7 @@ where job = (select job from emp where empno = 7788);
 --44. 사원번호가 7499인 사원보다 급여가 많은 사원을 표시하시오. 사원이름과 담당 업무
 
 select sal from emp where empno = 7499;
-
+ 
 select ename, job
 from emp
 where sal > (select sal from emp where empno = 7499);

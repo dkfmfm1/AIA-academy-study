@@ -129,7 +129,7 @@ from orders o, customer c, book b
 where o.custid = c.custid and o.bookid = b.bookid
 and c.name = '박지성';
 
-select *
+select * 
 from orders o, customer c, book b
 where o.custid = c.custid and o.bookid = b.bookid
 
