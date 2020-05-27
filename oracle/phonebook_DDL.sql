@@ -1,174 +1,126 @@
--- phonebook DDL
--- ===== 전화번호 부( Contact )
+-- 2020.05.26
 
--- 대리키 : 일련번호 -> pbIdx ==> PK 기본키로 만들기 위한 목적
+-- 전화번호 관리 프로그램
 
--- 이름, 전화번호, 주소, 이메일 <- 기본정보
--- 주소값과 이메일은 입력이 없을 때 기본값 입력
--- 친구의 타입 (카테고리) : univ, com, cafe 세가지 값만 저장 가능
------- 선택 정보
--- 전공, 학년
--- 회사이름, 부서이름, 직급
--- 모임이름, 닉네임
-drop table phonebook;
--- 테이블 레벨 제약 정의
-create table phonebook(
-    pbidx number(4),                -- 기본키, 대리키
-    pbname varchar2(10) not null,   -- 이름
-    pbnumber varchar(13) not null,  -- 전화번호
-    pbaddr varchar(50) default '입력 없음'  not null,    -- 주소
-    pbmail varchar2(50) default '입력 없음' not null,   -- 이메일
-    pbtype varchar2(10) not null,   -- 친구 타입
-    pbmajor varchar2(20),           -- 전공
-    pbgrade number(1),              -- 학년
-    pbcomName varchar2(50),         -- 회사이름    
-    pbcomDept varchar2(50),         -- 부서이름
-    pbcomJob varchar2(20),          -- 직급
-    pbcafeName varchar2(50),        -- 동호회이름
-    pbcafeNickname varchar2(50),    -- 닉네임
+
+-- [기본정보] 이름 / 전화번호 / 생일 / 이메일
+-- [대학교] 전공 / 학년
+-- [회사] 부서이름 / 직급
+-- [카페] 모임이름 / 닉네임
+
+-- 대리키 : 일련번호 - p_idx
+
+create table contact(
+    -- 기본정보
+    pIdx number(6), 
+    name varchar2(20) CONSTRAINT contact_name_nn not null,
+    phonenumber number(20) CONSTRAINT contact_phonenumber_nn not null,
+    address varchar2(20) default '입력 없음' CONSTRAINT contact_adress_nn not null,
+    email varchar2(20) default '입력 없음' CONSTRAINT contact_email_nn not null,
+    category varchar2(10),
+    -- 대학정보
+    major varchar2(20),
+    grade number(1),
+    -- 회사정보
+    company varchar2(20),
+    dept varchar2(20),
+    job varchar2(20),
+    -- 모임정보
+    cafename varchar2(20),
+    nickname varchar2(20),
     
-    constraint pb_pbidx_pk PRIMARY KEY (pbidx),
-    CONSTRAINT pb_type_ck check (pbtype in ('univ', 'com', 'cafe') ),
-    constraint pb_grade_ck check (pbgrade between 1 and 4)
+    constraint contact_pIdx_PK primary key(pIdx),
+    constraint contact_category_CK check (category in ('UNIV','COM','CAFE'))
 );
 
--- 컬럼 레벨 제약 정의
-create table phonebook(
-    pbidx number(4) constraint pb_pbidx_pk PRIMARY KEY,                -- 기본키
-    pbname varchar2(10) not null,   -- 이름
-    pbnumber varchar(13) not null,  -- 전화번호
-    pbaddr varchar(50) default '입력 없음'  not null,    -- 주소
-    pbmail varchar2(50) default '입력 없음' not null,   -- 이메일
-    pbtype varchar2(10) not null 
-    CONSTRAINT pb_type_ck 
-        check (pbtype in ('univ', 'com', 'cafe') ),   -- 친구 타입
-    pbmajor varchar2(20),           -- 전공
-    pbgrade number(1) 
-    constraint pb_grade_ck 
-    check (pbgrade between 1 and 4),              -- 학년
-    pbcomName varchar2(50),         -- 회사이름    
-    pbcomDept varchar2(50),         -- 부서이름
-    pbcomJob varchar2(20),          -- 직급
-    pbcafeName varchar2(50),        -- 동호회이름
-    pbcafeNickname varchar2(50)    -- 닉네임    
+drop table phoneinfo_basic;
+drop table phoneinfo_univ;
+drop table phoneinfo_com;
+
+
+create table phoneInfo_basic(
+    idx number(6),
+    fr_name varchar2(20) constraint phoneInfo_basic_fr_name_nn not null,
+    fr_phonenum varchar2(20) constraint phoneInfo_basic_fr_phonenum_nn not null,
+    fr_email varchar2(20),
+    fr_address varchar2(20),
+    fr_regdate date default sysdate,
     
+    constraint phoneInfo_basic_idx_pk primary key(idx)
 );
 
------------------------------------------------------------------
 
--- 사용자 정의 제약조건을 저장하는 딕셔너리 테이블
-desc user_constraints;
-select CONSTRAINT_NAME from user_constraints;
+create table phoneInfo_univ(
+    idx number(6),
+    fr_u_major varchar2(20) default 'N' constraint phoneInfo_univ_fr_u_magor_nn not null,
+    fr_u_year number(1) default 1  constraint phoneInfo_univ_fr_u_year_nn not null,
+    fr_ref number(7),
+    
+    constraint phoneInfo_univ_year_ck check (fr_u_year > 0  and  fr_u_year < 5),
+    constraint phoneInfo_univ_idx_pk primary key(idx),
+    constraint phoneInfo_univ_fr_ref_fk foreign key(fr_ref) references phoneInfo_basic(idx)
+);    
 
-select * from user_constraints where table_name='PHONEBOOK';
------------------------------------------------------------------
+create table phoneInfo_com(
+    idx number(6),
+    fr_c_company varchar2(20) default 'N' constraint phoneInfo_com_fr_c_company_nn not null,
+    fr_ref number(6),   
+    
+    constraint phoneInfo_com_idx_pk primary key(idx),
+    constraint phoneInfo_com_fr_ref_fk foreign key(fr_ref) references phoneInfo_basic(idx)
+);
 
---입력 SQL 작성
-desc phonebook;
 
-select * from phonebook;
+-------------------------------
+-- contact 데이터 입력
 
-truncate table phonebook;
-
---기본정보 입력
---학교 친구 정보 입력
---회사 친구 정보 입력
---모임 친구 정보 입력
-
-insert into phonebook (pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype)
-values(1, '짱구', '01044444444', 'SEOUL', 'zzang9@naver.com','univ');
-
-insert into phonebook (pbidx, pbname, pbnumber, pbmajor, pbtype, pbgrade)
-values(2, '짱아', '01055555555', '영문과','univ', 2);
-
-insert into phonebook(pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbcomname, pbcomdept, pbcomjob)
-values (3, '장윤원', '01052255225', 'SEOUL', 'woni@naver.com', 'com', '네이버', 'MANAGEMENT', null);
-
-insert into phonebook(pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbcafename, pbcafenickname)
-values(4, '왜가리', '01022222222', 'NEWYORK', 'gari@gmail.com', 'cafe', '개발자카페', '가리가리');
-
-insert into phonebook 
-values (5, '할미', '01077777777', 'PARIS', 'harmony@gmail.com', 'cafe', '','','','','','스터디카페','MANNHAKDO');
-
-insert into phonebook (pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbmajor, pbgrade)
-values(6, '오랑탄', '01024242424', 'SEOUL', 'orang@naver.com', 'univ', '피아노과', '' );
-
-insert into phonebook (pbidx, pbname, pbnumber, pbtype, pbmajor)
-values(7, '비버', '01031313131', 'univ', '피아노과');
-
---------------------------------------------------------------------------------------------------------------
---** 참고코드
------------------------------------------------------------------
--- 정보 입력 SQL 작성
------------------------------------------------------------------
-
-desc phonebook;
-
--- 기본정보 입력
-insert into phonebook 
-(pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype)
-values 
-(1, 'scott', '010-9999-1234', 'SEOUL', 'scott@gmail.com', 'univ')
-;
-
--- default 입력 처리 pbaddr, pbemail
-insert into phonebook 
-(pbidx, pbname, pbnumber, pbtype)
-values 
-(2, 'king', '010-7777-3333', 'univ')
-;
+-- 기본 정보 입력
+insert into contact (pidx, name, phonenumber, address, email)
+values (0001, '아이유', 010-0000-0002, 'SEOUL', '0002@naver.com');
 
 -- 학교 친구 정보 입력
-insert into phonebook 
-(pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbmajor, pbgrade)
-values 
-(3, 'son', '010-3333-1111', '서울', 'son@gmail.com', 'univ', 'computer', 1)
-;
+insert into contact (pidx, name, phonenumber, address, email, category, major, grade)
+values (0002, '박현정', 010-0000-0001, 'SEOUL', '0001@naver.com', 'UNIV', '경영학과', 4);
 
--- 회사 친구 정보 입력 
-insert into phonebook 
-(pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbcomname, pbcomdept, pbcomjob)
-values 
-(4, '박지성', '010-1234-0000', '런던', 'ji@gmail.com', 'com', 'NAVER', 'SEARCH', 'PROGRAMER')
-;
+-- 회사 친구 정보 입력
+insert into contact (pidx, name, phonenumber, address, email, category, company, dept, job)
+values (0003, '메시', 010-0000-0003, 'BUSAN', '0003@naver.com', 'COM', '바르셀로나', 'fw부', '팀장');
 
 -- 모임 친구 정보 입력
-insert into phonebook 
-(pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbcafename, pbcafenickname)
-values 
-(5, 'Rain', '010-1111-2222', 'SEOUL', 'rain@gmail.com', 'cafe', 'Campping', 'FirstCamp')
-;
+insert into contact (pidx, name, phonenumber, address, email, category, CAFENAME, NICKNAME)
+values (0004, '네이마르', 010-0000-0004, 'SEOUL', '0004@naver.com', 'CAFE', '포커동호회', '포커포커');
 
-desc phonebook;
+desc contact;
+select * from contact;
+--------------------------------
 
-select * from phonebook;
+desc PhoneInfo_basic;
+desc phoneinfo_univ;
+desc phoneinfo_com;
+desc phoneinfo_cafe;
+select * from PhoneInfo_basic;
 
+-- 기본정보
+insert into PhoneInfo_basic values
+(0001, '슈테켄', '010-0000-0001', 'sh@barcelona.com', 'Barcelona', default);
+insert into PhoneInfo_basic values
+(0002, '피케', '010-0000-0002', 'pq@barcelona.com', 'Barcelona', default);
+insert into PhoneInfo_basic values
+(0003, '부스케츠', '010-0000-0002', 'peekaboo@barcelona.com', 'Barcelona', default);
+insert into PhoneInfo_basic values
+(0004, '데용', '010-0000-0003', 'ddragon@barcelona.com', 'Barcelona', default);
 
---------------------------------------------------------------------------------------------------------------
+-- 대학친구 입력
+insert into PhoneInfo_univ values (0001, '골키퍼학과', 4, 1);
 
-------------------------------------------------------------------------
--- 정보 출력 질의 
-------------------------------------------------------------------------
-
--- 1. 기본 정보 출력 질의
-
-select pbidx, pbname, pbnumber from phonebook;
-
--- 2. 대학 친구 정보 출력 질의
-
-select pbname, pbnumber, pbmajor, pbgrade from phonebook where pbtype='univ';
-
--- 3. 회사 친구 정보 출력 질의
-
-select pbname, pbnumber, pbcomname, pbcomdept, pbcomjob from phonebook where pbtype='com';
-
--- 4. 모임 친구 정보 출력 질의
-
-select pbname, pbnumber, pbcafename, pbcafenickname from phonebook where pbtype='cafe';
+-- 회사친구입력
+insert into PhoneInfo_com values (0002, '바르셀로나', 2);
+insert into PhoneInfo_com values (0003, '바르셀로나', 3);
 
 
-select * from phonebook;
-
+select * from phoneinfo_basic b, phoneinfo_univ u, phoneinfo_com c where b.idx=u.fr_ref(+) and b.idx=c.fr_ref(+);
+select * from phoneinfo_basic b, phoneinfo_univ u where b.idx=u.fr_ref;
+select * from phoneinfo_basic b, phoneinfo_com c where b.idx=c.fr_ref; 
 
 
 
