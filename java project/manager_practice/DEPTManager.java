@@ -1,4 +1,4 @@
-package manager;
+package manager_practice;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class EMPManager {
+public class DEPTManager {
 
 	static Scanner sc = new Scanner(System.in);
 
-	static void empManager() {
-		System.out.println("EMP Manager Menu");
+	static void deptManager1() {
+		System.out.println("DEPT Manager Menu");
 		System.out.println("=========================================");
 		System.out.println("1. List  2. insert  3. search  4. delete ");
 		System.out.println("=========================================");
@@ -23,19 +23,19 @@ public class EMPManager {
 		switch (select) {
 		case 1:
 			System.out.println("전체 리스트 출력");
-			empShowAllData();
+			deptShowAllData();
 			break;
 		case 2:
-			System.out.println("사원 정보를 입력합니다.");
-			empInsert();
+			System.out.println("부서 정보를 입력합니다.");
+			deptInsert();
 			break;
 		case 3:
-			System.out.println("사원 정보를 검색합니다. 검색할 사원의 사원이름을 입력해주세요.");
-			empSearch();
+			System.out.println("부서 정보를 검색합니다. 검색할 부서의 부서명을 입력해주세요.");
+			deptSearch();
 			break;
 		case 4:
-			System.out.println("사원 정보를 삭제합니다. 삭제할 사원의 사원번호를 입력해주세요.");
-			empDelete();
+			System.out.println("부서 정보를 삭제합니다. 삭제할 부서의 부서번호를 입력해주세요.");
+			deptDelete();
 			break;
 
 		}
@@ -45,7 +45,7 @@ public class EMPManager {
 	
 	
 	
-	private static void empDelete() {
+	private static void deptDelete() {
 		Connection conn = null;
 		ResultSet rs = null;
 
@@ -67,11 +67,11 @@ public class EMPManager {
 			
 			Scanner kb = new Scanner(System.in);
 			
-			System.out.println("사원의 사원번호를 입력해주세요. >> ");
-			String searchEmpno = kb.nextLine();
+			System.out.println("부서의 부서번호를 입력해주세요. >> ");
+			String searchDeptno = kb.nextLine();
 
-			String sql = "delete * from emp";
-			String sql1 = "delete from emp where empno = "+ searchEmpno;
+			String sql = "delete * from dept";
+			String sql1 = "delete from dept where deptno = "+ searchDeptno;
 
 			// select 의 결과는 ResultSet 이 받는다.
 			// excueQuary(sql문)
@@ -81,14 +81,7 @@ public class EMPManager {
 			System.out.println();
 			System.out.println();
 			
-			System.out.print("사원정보");
-			System.out.print("---------------------------");
-			System.out.print("사원번호\t사원이름\t직급");
-			System.out.print("---------------------------");
 			
-			while (rs.next()) {
-
-			}
 
 			rs.close();
 			stmt.close();
@@ -111,7 +104,7 @@ public class EMPManager {
 
 
 
-	private static void empSearch() {
+	private static void deptSearch() {
 		Connection conn = null;
 		ResultSet rs = null;
 
@@ -133,11 +126,11 @@ public class EMPManager {
 			
 			Scanner kb = new Scanner(System.in);
 			
-			System.out.println("사원의 이름을 입력해주세요. >> ");
+			System.out.println("부서의 이름을 입력해주세요. >> ");
 			String searchName = kb.nextLine();
 
-			String sql = "select * from emp";
-			String sql1 = "select * from emp where ename = '"+ searchName+"'";
+			String sql = "select * from dept";
+			String sql1 = "select * from dept where dname = '"+ searchName+"'";
 
 			// select 의 결과는 ResultSet 이 받는다.
 			// excueQuary(sql문)
@@ -147,18 +140,18 @@ public class EMPManager {
 			System.out.println();
 			System.out.println();
 			
-			System.out.print("사원정보");
+			System.out.print("부서정보");
 			System.out.print("---------------------------");
-			System.out.print("사원번호\t사원이름\t위치??");
+			System.out.print("부서번호\t부서이름\t지역");
 			System.out.print("---------------------------");
 			
 			while (rs.next()) {
 //				System.out.print(rs.getInt("deptno") + "\t");
 //				System.out.print(rs.getString("dname") + "\t");
 //				System.out.print(rs.getString("loc") + "\n");
-//				System.out.print(rs.getInt(1) + "\t");
-//				System.out.print(rs.getString(2) + "\t");
-//				System.out.print(rs.getString(3) + "\n");
+				System.out.print(rs.getInt(1) + "\t");
+				System.out.print(rs.getString(2) + "\t");
+				System.out.print(rs.getString(3) + "\n");
 			}
 
 			rs.close();
@@ -182,7 +175,7 @@ public class EMPManager {
 
 	static Connection conn = null;
 	static ResultSet rs = null;
-	private static void empShowAllData() {
+	private static void deptShowAllData() {
 		try {
 			// 1. DB 드라이버 로드
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -199,7 +192,7 @@ public class EMPManager {
 			// 3. Statement : Connection
 			Statement stmt = conn.createStatement();
 
-			String sql = "select * from emp";
+			String sql = "select * from dept";
 
 			// select 의 결과는 ResultSet 이 받는다.
 			// excueQuary(sql문)
@@ -207,6 +200,11 @@ public class EMPManager {
 
 			// ResultSet : next() -> 행의 존재 유무 확인
 
+			System.out.print("부서정보\n");
+			System.out.print("---------------------------\n");
+			System.out.print("부서번호\t부서이름\t지역\n");
+			System.out.print("---------------------------\n");
+			
 			while (rs.next()) {
 //				System.out.print(rs.getInt("deptno") + "\t");
 //				System.out.print(rs.getString("dname") + "\t");
@@ -235,7 +233,7 @@ public class EMPManager {
 		
 	}
 
-	private static void empInsert() {
+	private static void deptInsert() {
 		
 		// JDBC 사용 객체
 		Connection conn = null;
@@ -245,26 +243,17 @@ public class EMPManager {
 		
 		
 		// 사용자 입력정보 변수
-		System.out.println("사원 정보를 입력해주세요.");
+		System.out.println("부서 정보를 입력해주세요.");
 		
-		System.out.println("사원번호");
-		int empno = sc.nextInt();
-		System.out.println("사원이름");
-		sc.nextLine();
-		String ename = sc.nextLine();
-		System.out.println("직급(업무)");
-		String job = sc.nextLine();
-		System.out.println("관리자");
-		int mgr = sc.nextInt();
-		System.out.println("입사일");
-		sc.nextLine();
-		String hiredate = sc.nextLine();
-		System.out.println("급여");
-		int sal = sc.nextInt();
-		System.out.println("수당");
-		int comm = sc.nextInt();
 		System.out.println("부서번호");
 		int deptno = sc.nextInt();
+		sc.nextLine();
+		System.out.println("부서이름");
+		String dname = sc.nextLine();
+		System.out.println("지역");
+		String loc = sc.nextLine();
+
+		
 		
 		// 공백 입력에 대한 예외처리가 있어야 하나 이번 버전에서는 모두 잘 입력된것으로 처리합니다.		
 		
@@ -292,19 +281,15 @@ public class EMPManager {
 			//   Statement or PreparedStatement
 			//   pstmt = conn.prepareStatement(SQL 문장)
 
-			String sql = "insert into emp "
-					+ " (empno, ename, job, mgr, hiredate, sal, comm, deptno) "
-					+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into dept"
+					+ " (deptno, dname, loc) "
+					+ " values (?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, empno);
-			pstmt.setString(2, ename);
-			pstmt.setString(3, job);
-			pstmt.setInt(4, mgr);
-			pstmt.setString(5, hiredate);
-			pstmt.setInt(6, sal);
-			pstmt.setInt(7, comm);
-			pstmt.setInt(8, deptno);
+			pstmt.setInt(1, deptno);
+			pstmt.setString(2, dname);
+			pstmt.setString(3, loc);
+			
 			
 			int resultCnt = pstmt.executeUpdate();
 			

@@ -1,4 +1,4 @@
-package manager;
+package manager_practice;
 
 import java.util.Scanner;
 
