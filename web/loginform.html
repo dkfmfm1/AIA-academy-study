@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>로그인 Form</title>
-        <meta charset="utf-8">
+        <title>로그인 폼</title>
+        <meta charset = "utf-8">
+        <style>
+            h1{
+                margin: 15px;
+            }
+            #align{
+                margin:10px auto;
+            }
+            td{
+                padding: 10px;
+            }
+            #btn_submit{
+                padding: 5px;
+                background-color: aquamarine;
+                font-weight: bold;
+                color: darkgreen;
+            }
+        </style>
     </head>
     <body>
-        <h1>회원 로그인</h1>    
+        <h1> 회원 로그인 </h1>
         <hr>
-        <form action ="" method="get">
-        <table>
-        <tr>
-            <td>아이디(이메일)</td>
-            <td><input type = "text"name ="id"></td>
-        <tr/>
-        <tr>
-            <td>비밀번호</td>
-            <td><input type = "text" name="pw"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td> <input type = "submit" value = "로그인"></td>
-        </tr>
-        
+        <form action="" method="get">
+        <table id="align">
+            <tr>
+                <td>아이디(이메일)</td>
+                <td><input type = "email" name="id"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type = "password" name="pw"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input id="btn_submit" type = "submit" value = "로그인"></td>
+            </tr>
         </table>
-       </form>
+        </form>
     </body>
 </html>
