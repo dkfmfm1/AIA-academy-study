@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>과제</title>
+        <meta charset="utf-8">
+        <style>
+            * {
+                margin:0;
+                padding:0;
+            }
+            
+            div.border {
+                border-bottom : 1px solid #AAAAAA;
+            }
+            
+            #wrap {
+
+            /*표현 영역의 사이즈*/
+            width : 800px;
+
+            /*영역의 수평방향의 중앙 위치*/
+            margin:0 auto;
+
+            /*flaot 속성의 범위를 현재 영역으로 한정*/
+            overflow: hidden;
+            }
+            
+            #한빛{
+                color: gray;
+            }
+            
+            #html5 {
+                float:left;
+            }
+            #css3 {
+                float:left;
+            }
+            #javascript {
+                float:left;
+            }
+            #검색 {
+                float:right;
+            }
+            
+            #본문 {
+                
+                /*표현 영역의 사이즈 설정*/
+                width:600px;
+                height:500px;
+                
+                /*영역의 수평방향의 중앙 위치*/
+                /*margin:0 auto;*/
+                
+                /*텍스트의 정렬 : 수평/수직 중앙*/
+                text-align:left;
+                line-height: 300px;
+                
+                /*텍스트 설정*/
+                font-size: 2em;
+                color : black;
+                font-weight: bold; 
+                
+                
+                /*수평방향 정렬*/
+                float:left;
+                
+            }
+            #카테고리 {
+                /*표현 영역의 사이즈 설정*/
+                width:190px;
+                height:500px;
+                
+                /*영역의 수평방향의 중앙 위치*/
+                /*margin:0 auto;*/
+                
+                /*텍스트의 정렬 : 수평/수직 중앙*/
+                text-align:left;
+                line-height: 300px;
+                
+                float:right;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <div id="header"><h1>HTML5 Example Preview</h1></div>
+        <div id="한빛" class="border"><h4>한빛아카데미</h4></div>
+        <div id="wrap" class="border">
+            <div id="html5">HTML5</div>
+            <div id="css3">CSS3</div>
+            <div id="javascript">JavaScript</div>
+            <div id="검색">input</div>
+        </div>
+        <div id="wrap" class="border">
+            <div id="본문">
+            <h3>HTML5 개요와 활용</h3>
+            <h4>2013년 02월 14일</h4>
+            쏼라쏼라쏼쏼라
+            </div>
+            <div id="카테고리">
+                <h4>카테고리</h4>
+                <h5>데이터</h5>
+                <h5>데이터</h5>
+                <h5>데이터</h5>
+                <h5>데이터</h5>
+                <h5>데이터</h5>
+            </div>
+        </div>  
+        <div id="본문2" class="border">ㅇ</div>
+        <div id="머리말" class="border">ㄷ</div>
+    </body>
+</html>
