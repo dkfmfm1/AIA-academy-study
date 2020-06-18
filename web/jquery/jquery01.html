@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery Basic</title>
+    <title>jquery 문서객체 다루기</title>
 
-    <!-- jQuery 라이브러리를 로드 : CDN 방식 -->
+    <style>
+
+        .title {
+            background-color: black;
+            color: cornsilk;
+        }
+
+    </style>
+
+    <!-- jquery lib CDN을 통해서 로드 -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
     <script>
 
-        // $() -> window
-        // $ -> jquery
+        $(document).ready(function(){
 
-        //$() : () --> 객체 생성
+            // 클래스 속성을 추가/삭제
+            // 추가 : addClass(클래스 속성 값)
+            // 삭제 : removeClass(클래스 속성 값)
+            $('h1').addClass('title');
 
-
-        //window.document
-        // window.onload = function(){}
-        $(document).ready(function () {
-
-            //alert('ready method !');
-
-            $('div>h2').click(function () {
-                alert('h1 tag');
-            });
-
+            
 
         });
 
 
 
-
     </script>
-</head>
 
+</head>
 <body>
 
-    <div>
-        <h1 id="title">안녕하세요</h1>
-        <h2 id="sub">안녕하세요</h2>
-    </div>
-
-
-
+    <h1>안녕하세요</h1>
+    
 </body>
-
 </html>

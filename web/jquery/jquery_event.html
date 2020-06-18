@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Event</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        h1{
+            border: 3px solid black;
+            cursor: pointer;
+        }
+
+        .over {
+            background-color: cadetblue;
+            color:cornsilk;
+            padding: 10px;
+        }
+
+        .big {
+            font-size: 2em;
+            font-weight: bold;
+            font-style: italic;
+
+            border: 3px solid green;
+
+        }
+
+        .alert {
+                color: red;
+            }
+    </style>
+    <script>
+
+        $(document).ready(function(){
+
+            // h1 영역에 click 이벤트 적용
+            $('h1').on('click', function(){
+                $(this).html(function(index, html){
+                    return html+'!';
+                });
+            });
+
+            $('h1').on({
+                mouseenter:function(){
+                    $(this).addClass('over');
+                },
+                mouseleave:function(){
+                    $(this).removeClass('over');
+                }
+            });
+
+
+            $('h1').blur();
+            $('h1').focus();
+            $('h1').load();
+            $('h1').resize();
+            $('h1').scroll();
+            $('h1').define();
+
+            $('input:text').focusin(function(){
+                $(this).parent().addClass('big');
+                $('div.alert').remove();
+            });
+
+            $('input:text').focusout(function () {
+                $(this).parent().removeClass('big');
+
+                var uid = $('#uid').val();
+                if(uid.length<1){
+                    $(this).after('<div class="alert">아이디는 필수항목입니다.</div>');
+                }
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    
+    <div>
+        <input type="text" id="uid">
+    </div>
+
+    <h1>click</h1>
+
+</body>
+</html>
