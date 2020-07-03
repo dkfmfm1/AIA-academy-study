@@ -8,7 +8,6 @@
 <style>
 	header {
 		text-align: center;
-	
 	}
 	
 	#wrap {
@@ -16,23 +15,35 @@
 	}
 	
 	#news{
-		width: 45%;
+		width : 45%;
 		float: left;
 	}
-	
-	#shopping{
-		width: 45%;
+	#shopping {
+		width : 45%;
 		float: right;
 	}
 </style>
 </head>
 <body>
 
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="include/header.jsp"  %>
 	<div id="wrap">
 	<%@ include file="include/news.jsp" %>
 	<%@ include file="include/shopping.jsp" %>
 	</div>
+	
+	<jsp:forward page="include/footer.jsp">
+		<jsp:param value="cool@gmail.com" name="email"/>
+		<jsp:param value="070-9999-8888" name="tel"/>
+	
+	</jsp:forward>
+
+
+
+
+
+
 
 </body>
 </html>
+©

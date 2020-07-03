@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<jsp:useBean id="memberInfo" class="model.LoginInfo" scope="session"/>
-
+<%
+	session.invalidate();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%
-		memberInfo.setUid("hot");
-		memberInfo.setName("뜨거워");
-		
-	%>
-
-	<h1><%= memberInfo %></h1>
+	<h1>로그아웃 되었습니다.</h1>
+	
+	<a href="mypage.jsp">My Page</a> <a href="logout.jsp">logout</a>
 </body>
 </html>
