@@ -1,6 +1,6 @@
 -- 방명록 테이블
 select * from guestbook_message;
-
+delete from guestbook_message;
 
 select rownum, MESSAGE_ID, message 
 from (select * from guestbook_message order by guestbook_message.message_id);
@@ -62,4 +62,6 @@ values (message_id_seq.nextVal, '테스터1', '1111', '글쓰기 테스트1');
 
 commit;
 
-delete from guestbook_message;
+select * from guestbook_message;
+
+select * from guestbook_message where message_id=10;
